@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Time Range" icon-name="utility:date_input">
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <lightning-input class="startDateCmp" type="date" label="Start Date" onchange={handleDateChangeSd}
+                    value={startDate} required></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-input class="endDateCmp" type="date" label="End Date" onchange={handleDateChangeEd}
+                    value={endDate} required></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    <lightning-card title="Owner Info" icon-name="standard:record">
+        <template if:true={loader}>
+            <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+        </template>
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <div class="slds-box slds-box_xx-small">
+                    <lightning-datatable key-field="id" data={data} columns={columns}>
+                    </lightning-datatable>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
